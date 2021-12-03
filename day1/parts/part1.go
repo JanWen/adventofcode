@@ -1,20 +1,13 @@
-package main
+package parts
 
 import (
-	"fmt"
 	"io/ioutil"
 	"strconv"
 	"strings"
 )
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
-func main() {
-	data, err := ioutil.ReadFile("./part1.txt")
+func Part1(input_file string) int {
+	data, err := ioutil.ReadFile(input_file)
 	check(err)
 	lines := strings.Split(string(data), "\n")
 	var count = 0
@@ -27,6 +20,5 @@ func main() {
 		}
 		prev = i
 	}
-	fmt.Println(count)
-
+	return count
 }

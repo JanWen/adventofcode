@@ -1,7 +1,6 @@
-package main
+package parts
 
 import (
-	"fmt"
 	"io/ioutil"
 	"strconv"
 	"strings"
@@ -19,13 +18,13 @@ func get_measurement(linenr int, lines []string) int {
 	return measurement
 }
 
-func main() {
-	data, err := ioutil.ReadFile("./part1.txt")
+func Part2(input_file string) int {
+	data, err := ioutil.ReadFile(input_file)
 	check(err)
 	lines := strings.Split(string(data), "\n")
 	var count = 0
 
-	for index, _ := range lines[:len(lines)-3] {
+	for index := range lines[:len(lines)-3] {
 		// first, err := '
 		window1 := get_measurement(index, lines) + get_measurement(index+1, lines) + get_measurement(index+2, lines)
 		check(err)
@@ -35,6 +34,5 @@ func main() {
 			count++
 		}
 	}
-	fmt.Println(count)
-
+	return count
 }
